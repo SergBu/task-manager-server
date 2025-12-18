@@ -1,0 +1,42 @@
+<Project>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);CS1591;NU1903;NU1902</NoWarn>
+    </PropertyGroup>
+    
+
+    <ItemGroup Condition="$(MSBuildProjectName.EndsWith('Tests'))">
+        <Using Include="Xunit"/>
+        <PackageReference Include="coverlet.msbuild" Version="6.0.2">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="coverlet.collector" Version="6.0.2">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Tests'))">
+        <AssemblyAttribute Include="Xunit.AssemblyTraitAttribute">
+            <_Parameter1>Category</_Parameter1>
+            <_Parameter2>UnitTests</_Parameter2>
+        </AssemblyAttribute>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.IntegrationTests'))">
+        <AssemblyAttribute Include="Xunit.AssemblyTraitAttribute">
+            <_Parameter1>Category</_Parameter1>
+            <_Parameter2>IntegrationTests</_Parameter2>
+        </AssemblyAttribute>
+    </ItemGroup>
+</Project>
