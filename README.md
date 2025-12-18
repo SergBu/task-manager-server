@@ -1,5 +1,8 @@
 # API для управления задачами под `.net`
-## CRUD для задач. Статусы задач: inProcess, completed, failed
+## Для задач реализованы: 
+1. CRUD
+2. Id типов задач от 1 до 4 
+3. Статусы задач: inProcess, completed, failed
 
 Команда для создания бд solution-а:
 
