@@ -1,0 +1,67 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Trace",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "Nlog": {
+    "extensions": [
+      {
+        "assembly": "NLog.Extensions.Logging"
+      },
+      {
+        "assembly": "NLog.Web.AspNetCore"
+      },
+      {
+        "assembly": "NLog.DiagnosticSource"
+      }
+    ],
+    "variables": {
+      "LogDir": "logs/",
+      "ArchiveDir": "${LogDir}/Archive",
+      "LogLayout": "[${level}]  [${date:format=yyyy-MM-dd HH\\:mm\\:ss.ffffff}]  [${aspnet-traceidentifier}]  [${activity:property=TraceId}]  [${machinename}]  ${replace-newlines:replacement=\t:${message:withexception=true}}  ${onexception:[${replace-newlines:replacement=\t:${exception:Data}}]${replace-newlines:replacement=\t:${exception:StackTrace=@}}}"
+    },
+    "targets": {
+      "console-out": {
+        "type": "ColoredConsole",
+        "useDefaultRowHighlightingRules": "false",
+        "layout": "${LogLayout}",
+        "rowHighlightingRules": [
+          {
+            "condition": "level == LogLevel.Debug",
+            "foregroundColor": "Gray"
+          },
+          {
+            "condition": "level == LogLevel.Warn",
+            "foregroundColor": "Gray"
+          },
+          {
+            "condition": "level == LogLevel.Trace",
+            "foregroundColor": "Gray"
+          },
+          {
+            "condition": "level == LogLevel.Info",
+            "foregroundColor": "White"
+          },
+          {
+            "condition": "level == LogLevel.Error",
+            "foregroundColor": "Magenta"
+          },
+          {
+            "condition": "level == LogLevel.Fatal",
+            "foregroundColor": "Red"
+          }
+        ]
+      }
+    },
+    "rules": [
+      {
+        "logger": "*",
+        "minLevel": "Info",
+        "writeTo": "console-out"
+      }
+    ]
+  }
+}

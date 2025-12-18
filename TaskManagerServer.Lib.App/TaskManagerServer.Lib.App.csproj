@@ -1,0 +1,82 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+        <PackageReference Include="FluentValidation" Version="11.11.0" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+        <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="8.0.0" />
+        <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Configuration\Development\appsettings.json" />
+        <Content Include="Configuration\Development\appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <None Remove="Configuration\Development\rabbit-queues-settings.json" />
+        <None Remove="Configuration\Development\secrets.json" />
+        <Content Include="Configuration\Development\secrets.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+
+        <None Remove="Configuration\Staging\appsettings.json" />
+        <Content Include="Configuration\Staging\appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <None Remove="Configuration\Staging\rabbit-queues-settings.json" />
+        <None Remove="Configuration\Staging\secrets.json" />
+        <Content Include="Configuration\Staging\secrets.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+
+        <None Remove="Configuration\Regress\appsettings.json" />
+        <Content Include="Configuration\Regress\appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <None Remove="Configuration\Regress\rabbit-queues-settings.json" />
+        <None Remove="Configuration\Regress\secrets.json" />
+        <Content Include="Configuration\Regress\secrets.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+
+        <None Remove="Configuration\Production\appsettings.json" />
+        <Content Include="Configuration\Production\appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <None Remove="Configuration\Production\rabbit-queues-settings.json" />
+        <None Remove="Configuration\Production\secrets.json" />
+        <Content Include="Configuration\Production\secrets.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="Configuration\nlog.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <None Remove="Configuration\Preprod\appsettings.json" />
+        <Content Include="Configuration\Preprod\appsettings.json">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <None Remove="Configuration\Preprod\rabbit-queues-settings.json" />
+        <None Remove="Configuration\Preprod\secrets.json" />
+        <Content Include="Configuration\Preprod\secrets.json">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\TaskManagerServer.Lib.Core\TaskManagerServer.Lib.Core.csproj" />
+        <ProjectReference Include="..\TaskManagerServer.Lib.Domain\TaskManagerServer.Lib.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Caching\" />
+      <Folder Include="RemoteApi\" />
+      <Folder Include="Validation\Validators\" />
+    </ItemGroup>
+</Project>

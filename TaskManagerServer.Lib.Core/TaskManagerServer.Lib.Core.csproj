@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+        <ProjectReference Include="..\TaskManagerServer.Lib.Domain\TaskManagerServer.Lib.Domain.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="FluentValidation" Version="11.11.0" />
+        <PackageReference Include="Mapster" Version="7.4.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Interfaces\Repository\" />
+      <Folder Include="TaskManagerServer\Dto\" />
+    </ItemGroup>
+</Project>
