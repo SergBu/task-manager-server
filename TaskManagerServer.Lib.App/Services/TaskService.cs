@@ -22,6 +22,8 @@ public class TaskService(IDataContext dataContext, ICurrentUserService currentUs
         {
             Id = x.Id,
             TaskTypeId = x.TaskTypeId,
+            Status = x.Status,
+            IsDeleted = x.Deleted.HasValue
         }).ToListAsync();
     }
 
@@ -33,6 +35,8 @@ public class TaskService(IDataContext dataContext, ICurrentUserService currentUs
             {
                 Id = x.Id,
                 TaskTypeId = x.TaskTypeId,
+                Status = x.Status,
+                IsDeleted = x.Deleted.HasValue
             }).FirstAsync();
     }
 
